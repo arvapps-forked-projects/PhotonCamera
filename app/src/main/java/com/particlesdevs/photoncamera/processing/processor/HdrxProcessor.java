@@ -121,6 +121,7 @@ public class HdrxProcessor extends ProcessorBase {
             ImageFrame frame = new ImageFrame(byteBuffer);
             frame.frameGyro = BurstShakiness.get(i);
             frame.image = mImageFramesToProcess.get(i);
+            //Log.d(TAG,"Timestamp:"+frame.image.getTimestamp());
             //frame.pair = IsoExpoSelector.pairs.get(i % IsoExpoSelector.patternSize);
             frame.pair = IsoExpoSelector.fullpairs.get(i);
             frame.number = i;
@@ -166,7 +167,9 @@ public class HdrxProcessor extends ProcessorBase {
                 minMpy = IsoExpoSelector.fullpairs.get(i).layerMpy;
             }
         }
+        /*
         if (images.get(0).pair.layerMpy != minMpy) {
+            Log.d(TAG,"Replace 0 with minMpy");
             for (int i = 1; i < images.size(); i++) {
                 if (images.get(i).pair.layerMpy == minMpy) {
                     ImageFrame frame = images.get(0);
@@ -175,7 +178,15 @@ public class HdrxProcessor extends ProcessorBase {
                     break;
                 }
             }
+        }*/
+        int selected = 0;
+        for (int i = 0; i < images.size(); i++) {
+            if(images.get(i).pair.layerMpy == minMpy){
+                selected = i;
+                break;
+            }
         }
+
         processingParameters.noiseModeler.computeStackingNoiseModel(1);
         float NoiseS = processingParameters.noiseModeler.computeModel[0].first.floatValue() +
                 processingParameters.noiseModeler.computeModel[1].first.floatValue() +
@@ -200,6 +211,9 @@ public class HdrxProcessor extends ProcessorBase {
         WrapperGPU.init(width, height, cnt);
         //WrapperGPU.InitCL();
         //WrapperGPU.nativeLib(new File(PhotonCamera.getLibsDirectory(),"libOpenCL.so").getAbsolutePath());
+        if (alignAlgorithm != 0){
+            WrapperGPU.loadFrame(images.get(selected).buffer, 1.f);
+        }
         for (int i = 0; i < cnt; i++) {
             float mpy = minMpy / images.get(i).pair.layerMpy;
             //if (images.get(i).pair.curlayer == IsoExpoSelector.ExpoPair.exposureLayer.Normal)
@@ -210,6 +224,10 @@ public class HdrxProcessor extends ProcessorBase {
             if (alignAlgorithm == 0) {
                 Wrapper.loadFrame(images.get(i).buffer, ((FAKE_WL) / processingParameters.whiteLevel) * mpy);
             } else {
+                if(i == selected) {
+                    Log.d(TAG, "Base frame:" + i);
+                    continue;
+                }
                 WrapperGPU.loadFrame(images.get(i).buffer, mpy);
             }
         }
@@ -264,6 +282,7 @@ public class HdrxProcessor extends ProcessorBase {
                 }
             }
             if(alignAlgorithm == 1) {
+                float bl = processingParameters.blackLevel[0]+processingParameters.blackLevel[1]+processingParameters.blackLevel[2]+processingParameters.blackLevel[3];
                 WrapperGPU.processFrame(NoiseS, NoiseO, 0.004f + (NoiseS + NoiseO), 1, 0.f, 0.f, 0.f, processingParameters.whiteLevel
                         , processingParameters.whitePoint[0], processingParameters.whitePoint[1], processingParameters.whitePoint[2], processingParameters.cfaPattern);
             } else {

@@ -207,7 +207,7 @@
                 android:title="@string/noise_reduction_str"
                 android:summary=""
                 android:defaultValue="@string/pref_noise_seekbar_default"
-                app:maxValue="2"
+                app:maxValue="4"
                 app:minValue="-6"
                 app:isFloat="true"
                 app:stepPerUnit="10"
@@ -255,6 +255,17 @@
                 android:icon="@drawable/ic_burst_mode_black_24dp"
                 android:entries="@array/alignset_entries"
                 android:entryValues="@array/alignset_entryValues"
+                android:defaultValue="@string/pref_align_method_default"
+
+                />
+        <ListPreference
+                android:layout="@layout/preference_with_margin"
+                android:key="@string/pref_color_method_key"
+                app:useSimpleSummaryProvider="true"
+                android:title="@string/color_method"
+                android:icon="@drawable/ic_saturation"
+                android:entries="@array/colorset_entries"
+                android:entryValues="@array/colorset_entryValues"
                 android:defaultValue="@string/pref_align_method_default"
 
                 />

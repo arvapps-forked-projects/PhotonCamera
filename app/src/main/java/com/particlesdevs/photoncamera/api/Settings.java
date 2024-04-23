@@ -38,6 +38,8 @@ public class Settings {
     public boolean eisPhoto;
     public boolean fpsPreview;
     public int alignAlgorithm;
+
+    public int colorMethod;
     public String mCameraID;
     public float[] toneMap;
     public float[] gamma;
@@ -78,6 +80,7 @@ public class Settings {
         fpsPreview = PreferenceKeys.isFpsPreviewOn();
         hdrxNR = PreferenceKeys.isHdrxNrOn();
         alignAlgorithm = PreferenceKeys.getAlignMethodValue();
+        colorMethod = PreferenceKeys.getColorMethodValue();
         selectedMode = CameraMode.valueOf(PreferenceKeys.getCameraModeOrdinal());
         toneMap = parseToneMapArray();
         gamma = parseGammaArray();

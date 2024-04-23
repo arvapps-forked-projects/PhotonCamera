@@ -143,8 +143,8 @@ public class PostPipeline extends GLBasePipeline {
          */
 
         if (PhotonCamera.getSettings().hdrxNR) {
-            if (nightMode)
-                add(new Wavelet());
+            //if (nightMode)
+            //    add(new Wavelet());
             add(new ESD3D(false));
             add(new ESD3D(true));
         }
