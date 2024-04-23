@@ -22,6 +22,7 @@ oneplus:hotdogb
 oneplus:guacamole
 oneplus:guacamoles
 oneplus:guacamoleb
+oppo:op528bl1
 poco:vayu
 poco:surya
 xiaomi:alioth
