@@ -112,6 +112,7 @@ import java.util.concurrent.TimeUnit;
 import static android.hardware.camera2.CameraMetadata.CONTROL_AE_MODE_ON;
 import static android.hardware.camera2.CameraMetadata.CONTROL_AF_MODE_CONTINUOUS_PICTURE;
 import static android.hardware.camera2.CameraMetadata.CONTROL_AF_MODE_CONTINUOUS_VIDEO;
+import static android.hardware.camera2.CameraMetadata.CONTROL_AF_MODE_OFF;
 import static android.hardware.camera2.CameraMetadata.CONTROL_AF_TRIGGER_CANCEL;
 import static android.hardware.camera2.CameraMetadata.CONTROL_AF_TRIGGER_IDLE;
 import static android.hardware.camera2.CameraMetadata.CONTROL_VIDEO_STABILIZATION_MODE_ON;
@@ -1663,14 +1664,17 @@ public class CaptureController implements MediaRecorder.OnInfoListener {
             Log.d(TAG, "HDR:" + IsoExpoSelector.HDR);
 
 
-            if ((!(focus == 0.0 && Build.BRAND.equalsIgnoreCase("samsung"))) && isDualSession) {
-                //captureBuilder.set(CaptureRequest.CONTROL_AF_MODE, CONTROL_AF_MODE_OFF);
+            if ((!(focus == 0.0 && Build.BRAND.equalsIgnoreCase("samsung")))) {
+                captureBuilder.set(CaptureRequest.CONTROL_AF_MODE, CONTROL_AF_MODE_OFF);
                 captureBuilder.set(CaptureRequest.CONTROL_AF_TRIGGER, CONTROL_AF_TRIGGER_IDLE);
                 captureBuilder.set(CaptureRequest.LENS_FOCUS_DISTANCE, focus);
             }
+            /*
             if(!isDualSession){
                 captureBuilder.set(CaptureRequest.CONTROL_AF_TRIGGER, CONTROL_AF_TRIGGER_IDLE);
-            }
+                captureBuilder.set(CaptureRequest.CONTROL_AF_MODE, CaptureRequest.CONTROL_AF_MODE_OFF);
+                captureBuilder.set(CaptureRequest.LENS_FOCUS_DISTANCE, focus);
+            }*/
 
 
 
