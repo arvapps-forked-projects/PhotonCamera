@@ -19,3 +19,4 @@ samsung:p3s
 samsung:r0q
 samsung:dm3
 samsung:dm3q
+tecno:tecno-ci8n
