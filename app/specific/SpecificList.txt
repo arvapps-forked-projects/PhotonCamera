@@ -1,3 +1,4 @@
+redmi:earth
 xiaomi:dipper
 xiaomi:thor
 xiaomi:ishtar

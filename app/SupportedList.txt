@@ -1,3 +1,4 @@
+redmi:earth
 xiaomi:cepheus
 xiaomi:cas
 xiaomi:raphael
