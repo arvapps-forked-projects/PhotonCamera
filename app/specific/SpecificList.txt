@@ -4,6 +4,7 @@ xiaomi:thor
 xiaomi:ishtar
 xiaomi:alioth
 xiaomi:earth
+xiaomi:psyche
 oneplus:guacamole
 oneplus:guacamoles
 oneplus:guacamoleb

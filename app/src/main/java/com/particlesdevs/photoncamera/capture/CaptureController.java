@@ -39,6 +39,7 @@ import android.hardware.camera2.params.ColorSpaceTransform;
 import android.hardware.camera2.params.MeteringRectangle;
 import android.hardware.camera2.params.OutputConfiguration;
 import android.hardware.camera2.params.StreamConfigurationMap;
+import android.hardware.camera2.params.TonemapCurve;
 import android.media.CamcorderProfile;
 import android.media.ImageReader;
 import android.media.MediaRecorder;
@@ -1417,7 +1418,24 @@ public class CaptureController implements MediaRecorder.OnInfoListener {
         } else {
             mPreviewRequestBuilder = mCameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW);
         }
-
+        float r[] = new float[64];
+        float g[] = new float[64];
+        float b[] = new float[64];
+        for (int i = 0; i < 64; i++) {
+            float v = i / 63.0f;
+            float l = 0.02f;
+            float ga = 1.45f - 1.2f * (float)Math.pow(v, 0.25f);
+            //r[i] = 1.f/(1.f + (float)Math.exp(-6.0f * (v - 0.5f)));
+            //g[i] = 1.f/(1.f + (float)Math.exp(-6.0f * (v - 0.5f)));
+            //b[i] = 1.f/(1.f + (float)Math.exp(-6.0f * (v - 0.5f)));
+            r[i] = (float) Math.pow(Math.max((v-l)/(1.0-l),0),ga);
+            g[i] = (float) Math.pow(Math.max(v,0),ga);
+            b[i] = (float) Math.pow(Math.max((v-l)/(1.0-l),0),ga);
+        }
+        TonemapCurve curve = new TonemapCurve(r, g, b);
+        Log.d(TAG, "Curve:" + curve.toString());
+        mPreviewRequestBuilder.set(CaptureRequest.TONEMAP_CURVE, curve);
+        mPreviewRequestBuilder.set(CaptureRequest.TONEMAP_MODE, CaptureRequest.TONEMAP_MODE_CONTRAST_CURVE);
         mPreviewRequestBuilder.addTarget(surface);
         mPreviewMeteringAF = mPreviewRequestBuilder.get(CONTROL_AF_REGIONS);
         mPreviewAFMode = mPreviewRequestBuilder.get(CONTROL_AF_MODE);

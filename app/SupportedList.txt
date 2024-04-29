@@ -12,6 +12,7 @@ xiaomi:laurus
 xiaomi:thor
 xiaomi:ishtar
 xiaomi:earth
+xiaomi:psyche
 oneplus:oneplus7
 oneplus:oneplus7t
 oneplus:oneplus7tpro

@@ -349,6 +349,13 @@
                     />
             <Preference
                     android:layout="@layout/preference_about"
+                    app:singleLineTitle="true"
+                    android:enabled="false"
+                    android:persistent="false"
+                    android:key="@string/pref_this_device_key"
+                    />
+            <Preference
+                    android:layout="@layout/preference_about"
                     android:key="@string/pref_contributors_key"
                     android:icon="@drawable/ic_github"
                     android:title="@string/contributors_title"
@@ -365,13 +372,6 @@
                     android:enabled="false"
                     android:persistent="false"
                     android:key="@string/all_devices_names"
-                    />
-            <Preference
-                    android:layout="@layout/preference_about"
-                    app:singleLineTitle="true"
-                    android:enabled="false"
-                    android:persistent="false"
-                    android:key="@string/pref_this_device_key"
                     />
         </PreferenceScreen>
     </PreferenceCategory>
