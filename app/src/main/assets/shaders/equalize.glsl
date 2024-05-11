@@ -244,7 +244,8 @@ void main() {
 
     //sRGB*=br;
     float minbl = min(BlVec.r,min(BlVec.g,BlVec.b));
-    BlVec-=minbl;
+    //BlVec-=minbl*0.5;
+    BlVec = vec3(0.0);
     sRGB = clamp((sRGB-BlVec)/(vec3(1.0)-BlVec),0.0,1.0);
     Output.rgb = mix(sRGB2,sRGB,clamp(pbr/BLACKPOS,0.0,1.0));
 

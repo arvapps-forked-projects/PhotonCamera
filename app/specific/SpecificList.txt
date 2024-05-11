@@ -1,7 +1,10 @@
+redmi:earth
 xiaomi:dipper
 xiaomi:thor
 xiaomi:ishtar
 xiaomi:alioth
+xiaomi:earth
+xiaomi:psyche
 oneplus:guacamole
 oneplus:guacamoles
 oneplus:guacamoleb
@@ -14,7 +17,9 @@ oneplus:oneplus7tpro
 oneplus:oneplus7tpronr
 oneplus:oneplus7pro
 oneplus:oneplus7pronr
+oppo:op528bl1
 samsung:p3s
 samsung:r0q
 samsung:dm3
 samsung:dm3q
+tecno:tecno-ci8n

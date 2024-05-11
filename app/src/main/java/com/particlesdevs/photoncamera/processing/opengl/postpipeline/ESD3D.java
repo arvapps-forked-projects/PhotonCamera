@@ -32,7 +32,7 @@ public class ESD3D extends Node {
             grad = basePipeline.getMain();
             WorkingTexture = basePipeline.main3;
         }
-        glUtils.ConvDiff(previousNode.WorkingTexture, grad, 0.f);
+        //glUtils.ConvDiff(previousNode.WorkingTexture, grad, 0.f);
 
 
 
@@ -43,7 +43,12 @@ public class ESD3D extends Node {
             glProg.setDefine("NOISEO", basePipeline.noiseO);
 
             glProg.setDefine("INSIZE", basePipeline.mParameters.rawSize);
-            glProg.useAssetProgram("esd3d");
+            float ks = 1.0f + Math.min((basePipeline.noiseS+basePipeline.noiseO) * 3.0f * 100000.f, 34.f);
+            int msize = 5 + (int)ks - (int)ks%2;
+            Log.d("ESD3D", "KernelSize: "+ks+" MSIZE: "+msize);
+            glProg.setDefine("KERNELSIZE", ks);
+            glProg.setDefine("MSIZE", msize);
+            glProg.useAssetProgram("esd3d2");
             glProg.setTexture("NoiseMap", basePipeline.main4);
             glProg.setTexture("InputBuffer", previousNode.WorkingTexture);
             glProg.setTexture("GradBuffer", grad);

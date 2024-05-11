@@ -16,7 +16,7 @@ public class IsoExpoSelector {
     private static final String TAG = "IsoExpoSelector";
     public static boolean HDR = false;
     public static boolean useTripod = false;
-    public static final int patternSize = 3;
+    public static final int patternSize = 2;
     public static ArrayList<ExpoPair> pairs = new ArrayList<>();
     public static ArrayList<ExpoPair> fullpairs = new ArrayList<>();
     public static long lastSelectedExposure = 0;
@@ -299,8 +299,14 @@ public class IsoExpoSelector {
             if (normalizeCheck()) {
                 iso *= k;
                 exposure /= k;
-                if (normalizeCheck()) {
+                if(normalizeCheck()){
                     exposure *= k;
+                    exposure /= Math.sqrt(k);
+                    iso /= Math.sqrt(k);
+                    if (normalizeCheck()) {
+                        exposure *= Math.sqrt(k);
+                        iso *= Math.sqrt(k);
+                    }
                 }
             }
         }

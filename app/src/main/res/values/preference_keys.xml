@@ -35,6 +35,7 @@
     <string name="pref_saturation_seekbar_key" translatable="false">pref_saturation_seekbar_key</string>
     <string name="pref_expocompensation_seekbar_key" translatable="false">pref_expocompensation_seekbar_key</string>
     <string name="pref_align_method_key" translatable="false">pref_align_method_key</string>
+    <string name="pref_color_method_key" translatable="false">pref_color_method_key</string>
     <string name="pref_cfa_key" translatable="false">pref_cfa_key</string>
     <string name="pref_remosaic_key" translatable="false">pref_remosaic_key</string>
     <string name="pref_telegram_channel_key" translatable="false">pref_telegram_channel_key</string>

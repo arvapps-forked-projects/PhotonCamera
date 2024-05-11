@@ -18,8 +18,8 @@ public class Sharpen2 extends Node {
     public void Compile() {
     }
     float blurSize = 0.20f;
-    float sharpSize = 1.5f;
-    float sharpMin = 0.5f;
+    float sharpSize = 0.9f;
+    float sharpMin = 0.3f;
     float sharpMax = 1.f;
     float denoiseActivity = 1.f;
     @Override

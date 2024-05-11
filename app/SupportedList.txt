@@ -1,3 +1,4 @@
+redmi:earth
 xiaomi:cepheus
 xiaomi:cas
 xiaomi:raphael
@@ -10,6 +11,8 @@ xiaomi:laurel_sprout
 xiaomi:laurus
 xiaomi:thor
 xiaomi:ishtar
+xiaomi:earth
+xiaomi:psyche
 oneplus:oneplus7
 oneplus:oneplus7t
 oneplus:oneplus7tpro
@@ -22,6 +25,7 @@ oneplus:hotdogb
 oneplus:guacamole
 oneplus:guacamoles
 oneplus:guacamoleb
+oppo:op528bl1
 poco:vayu
 poco:surya
 xiaomi:alioth
@@ -30,6 +34,7 @@ realme:rmx1931l1
 samsung:x1s
 samsung:dm3
 samsung:dm3q
+tecno:tecno-ci8n
 motorola:sofiar
 lge:flashlm
 lge:flashlmdd

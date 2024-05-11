@@ -850,8 +850,8 @@ public class GLUtils {
             Log.d("Pyramid","downscale:"+pyramid.sizes[i]);
         }
         for (int i = 0; i < upscale.length; i++) {
-            //upscale[i] = (interpolate(downscaled[i + 1],pyramid.sizes[i]));
-            upscale[i] = downscaled[i+1];
+            upscale[i] = (interpolate(downscaled[i + 1],pyramid.sizes[i]));
+            //upscale[i] = downscaled[i+1];
             Log.d("Pyramid","upscale:"+pyramid.sizes[i]);
             //Log.d("Pyramid","point:"+pyramid.sizes[i]+" after:"+upscale[i].mSize);
         }

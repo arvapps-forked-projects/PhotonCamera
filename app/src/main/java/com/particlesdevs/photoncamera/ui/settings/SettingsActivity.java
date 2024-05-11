@@ -215,7 +215,7 @@ public class SettingsActivity extends BaseActivity implements PreferenceFragment
                 if (preference != null) {
                     preference.setSummary((mSettingsManager.getStringSet(PreferenceKeys.Key.DEVICES_PREFERENCE_FILE_NAME.mValue,
                             ALL_DEVICES_NAMES_KEY, Collections.singleton(mContext.getString(R.string.list_not_loaded)))
-                            .stream().map(s -> s + "\n").reduce("\n", String::concat)));
+                            .stream().sorted().map(s -> s + "\n").reduce("\n", String::concat)));
                 }
            });
         }

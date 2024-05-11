@@ -9,7 +9,7 @@ public class SpecificSettingSensor {
     public boolean isRawColorCorrection = false;
     public float[] blackLevel;
     public float captureSharpeningS = 1.05f;
-    public float captureSharpeningIntense = 0.5f;
+    public float captureSharpeningIntense = 0.8f;
     public float[] aberrationCorrection;
 
     public float[][] CalibrationTransform1;

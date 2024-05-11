@@ -260,6 +260,10 @@ public class PreferenceKeys {
         return preferenceKeys.settingsManager.getInteger(SCOPE_GLOBAL, Key.KEY_ALIGN_METHOD);
     }
 
+    public static int getColorMethodValue() {
+        return preferenceKeys.settingsManager.getInteger(SCOPE_GLOBAL, Key.KEY_COLOR_METHOD);
+    }
+
     public static int getCFAValue() {
         return preferenceKeys.settingsManager.getInteger(SCOPE_GLOBAL, Key.KEY_CFA);
     }
@@ -383,6 +387,7 @@ public class PreferenceKeys {
         KEY_EXPOCOMPENSATE_SEEKBAR(R.string.pref_expocompensation_seekbar_key),
         KEY_SATURATION_SEEKBAR(R.string.pref_saturation_seekbar_key),
         KEY_ALIGN_METHOD(R.string.pref_align_method_key),
+        KEY_COLOR_METHOD(R.string.pref_color_method_key),
         KEY_TELEGRAM(R.string.pref_telegram_channel_key),
         KEY_CONTRIBUTORS(R.string.pref_contributors_key),
         KEY_THEME(R.string.pref_theme_key),

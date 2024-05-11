@@ -23,6 +23,7 @@ import com.particlesdevs.photoncamera.capture.CaptureController;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 
@@ -281,6 +282,12 @@ public class Parameters {
                         forwardt1.getElement(2, 2).floatValue() == forwardt2.getElement(2, 2).floatValue() &&
                         forwardt1.getElement(1, 2).floatValue() == forwardt2.getElement(1, 2).floatValue();
         Rational[] rat = new Rational[9];
+        if (PhotonCamera.getSettings().colorMethod == 1){
+            wrongCalibration = false;
+        }
+        if (PhotonCamera.getSettings().colorMethod == 2){
+            wrongCalibration = true;
+        }
         if (CST != null) {
             CST.copyElements(rat, 0);
             int cnt = 0;
@@ -305,6 +312,7 @@ public class Parameters {
             sensorToProPhoto[7] = 0.0f;
             sensorToProPhoto[8] = 1.0f / whitePoint[2];
         }
+        Log.d(TAG, Arrays.toString(sensorToProPhoto) + PhotonCamera.getSettings().colorMethod);
         Converter.multiply(Converter.HDRXCCM, Converter.sProPhotoToXYZ, /*out*/proPhotoToSRGB);
         if (CST != null && wrongCalibration && !customCCT.exists()) {
             Rational[] temp = new Rational[9];
